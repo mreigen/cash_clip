@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Billid:</b>
+  <%= @bill.id %>
+</p>
+
+<p>
+  <b>Serial number:</b>
+  <%= @bill.serial %>
+</p>
+
+<p>
+  <b>Back number:</b>
+  <%= @bill.backnumber %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @bill.year %>
+</p>
+
+<p>
+  <b>Original location:</b>
+  <%= @bill.orig_loc %>
+</p>
+
+<p>
+  <b>Current location:</b>
+  <%= @bill.curr_loc %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @bill.amount %>
+</p>
+
+<%= link_to 'Edit', edit_bill_path(@bill) %> |
+<%= link_to 'Back', bills_path %>

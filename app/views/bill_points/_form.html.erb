@@ -1,0 +1,37 @@
+<%= form_for(@bill_point) do |f| %>
+  <% if @bill_point.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bill_point.errors.count, "error") %> prohibited this bill_point from being saved:</h2>
+
+      <ul>
+      <% @bill_point.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_count %><br />
+    <%= f.number_field :owner_count %>
+  </div>
+  <div class="field">
+    <%= f.label :distance %><br />
+    <%= f.number_field :distance %>
+  </div>
+  <div class="field">
+    <%= f.label :repeater %><br />
+    <%= f.number_field :repeater %>
+  </div>
+  <div class="field">
+    <%= f.label :average_speed %><br />
+    <%= f.text_field :average_speed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

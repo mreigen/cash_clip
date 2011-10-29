@@ -1,0 +1,31 @@
+<h1>Listing bill_points</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Owner count</th>
+    <th>Distance</th>
+    <th>Repeater</th>
+    <th>Average speed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bill_points.each do |bill_point| %>
+  <tr>
+    <td><%= bill_point.id %></td>
+    <td><%= bill_point.owner_count %></td>
+    <td><%= bill_point.distance %></td>
+    <td><%= bill_point.repeater %></td>
+    <td><%= bill_point.average_speed %></td>
+    <td><%= link_to 'Show', bill_point %></td>
+    <td><%= link_to 'Edit', edit_bill_point_path(bill_point) %></td>
+    <td><%= link_to 'Destroy', bill_point, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bill point', new_bill_point_path %>

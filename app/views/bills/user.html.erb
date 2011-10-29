@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+	<th>Bill id</th>
+	<th>Serial number</th>
+	<th>Back number</th>
+	<th>Year</th>
+	<th>Original location</th>
+	<th>Current location</th>
+	<th>Amount</th>
+	
+	<% @bills.each do |bill| %>
+	<tr>
+	<td>
+	  <%= bill.id %>
+	</td>
+
+	<td>
+	  <%= bill.serial %>
+	</td>
+
+	<td>
+	  <%= bill.backnumber %>
+	</td>
+
+	<td>
+	  <%= bill.year %>
+	</td>
+
+	<td>
+	  <%= bill.orig_loc %>
+	</td>
+
+	<td>
+	  <%= bill.curr_loc %>
+	</td>
+
+	<td>
+	  $<%= bill.amount %>
+	</td>
+
+	<% end %>
+	</tr>
+</table>
+
+<%= link_to 'Back', bills_path %>

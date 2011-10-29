@@ -1,0 +1,7 @@
+[1m[37m      invoke[0m  active_record
+[1m[32m      create[0m    db/migrate/20110925000121_create_bill_points.rb
+[1m[34m   identical[0m    app/models/bill_point.rb
+[1m[37m      invoke[0m    test_unit
+[1m[34m   identical[0m      test/unit/bill_point_test.rb
+[1m[31m    conflict[0m      test/fixtures/bill_points.yml
+    Overwrite /Users/mreigen/rails_projects/cash_clip/test/fixtures/bill_points.yml? (enter "h" for help) [Ynaqdh] 

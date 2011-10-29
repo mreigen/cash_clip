@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @bill_point.id %>
+</p>
+
+<p>
+  <b>Owner count:</b>
+  <%= @bill_point.owner_count %>
+</p>
+
+<p>
+  <b>Distance:</b>
+  <%= @bill_point.distance %>
+</p>
+
+<p>
+  <b>Repeater:</b>
+  <%= @bill_point.repeater %>
+</p>
+
+<p>
+  <b>Average speed:</b>
+  <%= @bill_point.average_speed %>
+</p>
+
+
+<%= link_to 'Edit', edit_bill_point_path(@bill_point) %> |
+<%= link_to 'Back', bill_points_path %>

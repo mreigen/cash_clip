@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 
+  owner_count: 1
+  distance: 1
+  repeater: 1
+  average_speed: 1.5
+
+two:
+  id: 
+  owner_count: 1
+  distance: 1
+  repeater: 1
+  average_speed: 1.5
