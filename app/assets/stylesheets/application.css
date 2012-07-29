@@ -7,10 +7,12 @@
 */
 
 #container{
-    width: 650px;
+    width: 800px;
     position: relative;
     margin: auto;
+    /*
     background-color: white;
-    padding: 20px;
     border: solid 1px orange;
+    */
+    padding: 20px;
 }

@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
   # new columns need to be added here to be writable through mass assignment
   attr_accessible :username, :email, :password, :password_confirmation
-
+  has_many :fedbank_users
+  has_many :fedbanks, :through => :fedbank_users
+  has_many :bills
+  
   attr_accessor :password
   before_save :prepare_password
 
@@ -26,6 +29,10 @@ class User < ActiveRecord::Base
   def has_bill?(options = {})
     @bill = Bill.where({:serial => options[:serial], :user_id => options[:user_id] })
     return !@bill.blank?
+  end
+  
+  def add_bank(options = {})
+    bank_id = options[:bank_id].to_s
   end
   
   private

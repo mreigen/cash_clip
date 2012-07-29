@@ -3,17 +3,26 @@ body {
   color: #333;
   font-family: helvetica, sans-serif, verdana, arial;
   font-size: 13px;
-  line-height: 18px; }
+}
 
 table, form {
-  background-color: #CCC;
-  padding: 5px;
+	padding: 5px;
+	width: 660px;
+	background-color: white;
+	box-shadow: #333 1px 1px 1px;
+	border-radius: 1px;
+	position: relative;
+	font-family: helvetica;
+	font-size: 17px;
 }
 
 p, ol, ul, td {
-  font-family: helvetica, sans-serif, verdana, arial;
-  font-size: 13px;
-  line-height: 18px; }
+font-family: helvetica, sans-serif, verdana, arial;
+font-size: 14px;
+line-height: 22px;
+padding-right: 37px;
+padding-left: 6px;
+}
 
 pre {
   background-color: #eee;
@@ -26,7 +35,9 @@ a {
     color: #666; }
   &:hover {
     color: #fff;
-    background-color: #000; } }
+    background-color: orange; } 
+	text-decoration: none;
+}
 
 div {
   &.field, &.actions {
@@ -59,3 +70,41 @@ div {
   ul li {
     font-size: 12px;
     list-style: square; } }
+
+#login, #password{
+	height: 18px;
+	width: 238px;
+}
+
+input[type="submit"] {
+	background-color: black;
+	border: 0;
+	color: white;
+	font-family: helvetica;
+	font-size: 14px;
+	padding: 6px;
+}
+
+#login-div, #password-div {
+	position: relative;
+	margin-right: 30px;
+	margin-top: 8px;
+	float: left;
+}
+
+#login-div, #password-div label {
+color: #333;
+font-family: helvetica;
+font-size: 14px;
+}
+
+th {
+	background-color: #ddd;
+	padding: 4px;
+}
+
+#new_link {
+	position: relative;
+	float: left;
+	padding: 3px;
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111023202954) do
+ActiveRecord::Schema.define(:version => 20111106012026) do
 
   create_table "bill_points", :force => true do |t|
     t.integer  "owner_count"
@@ -33,6 +33,27 @@ ActiveRecord::Schema.define(:version => 20111023202954) do
     t.integer  "year"
     t.string   "orig_loc"
     t.string   "curr_loc"
+    t.string   "bank_id",                  :default => "Z"
+  end
+
+  create_table "fed_banks_users", :id => false, :force => true do |t|
+    t.string  "fed_bank_id"
+    t.integer "user_id"
+  end
+
+  create_table "fedbank_users", :id => false, :force => true do |t|
+    t.string  "fedbank_id"
+    t.integer "user_id"
+  end
+
+  create_table "fedbanks", :force => true do |t|
+    t.string   "bank_id"
+    t.string   "primary_key"
+    t.string   "name",              :default => ""
+    t.integer  "num_bills_actual",  :default => 0
+    t.integer  "num_bills_claimed", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

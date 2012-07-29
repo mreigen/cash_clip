@@ -8,7 +8,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @bills }
+      #format.json { render json: @bills }
     end
   end
 
@@ -19,7 +19,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @bill }
+      #format.json { render json: @bill }
     end
   end
 
@@ -30,7 +30,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @bill }
+      #format.json { render json: @bill }
     end
   end
 
@@ -43,16 +43,18 @@ class BillsController < ApplicationController
   # POST /bills.json
   def create
     @bill = Bill.new(params[:bill])
-
+    @bill.bank_id = params[:bill][:serial][0,1].to_s
+    #FedBank.by_bank_id(fed_bank).first.id.to_s.inspect
+    current_user.fedbank_users.create(:fedbank_id => @bill.bank_id)
     respond_to do |format|
       if current_user.has_bill?({:serial => params[:bill][:serial], :user_id => params[:bill][:user_id]}) 
-        format.html { redirect_to @bill, notice: 'You already entered a bill with the serial: ' + params[:bill][:serial] }
+        format.html { redirect_to @bill, :notice => 'You already entered a bill with the serial: ' + params[:bill][:serial] }
       elsif @bill.save
-        format.html { redirect_to @bill, notice: 'Bill was successfully created.' }
-        format.json { render json: @bill, status: :created, location: @bill }
+        format.html { redirect_to @bill, :notice => 'Bill was successfully created.' }
+        #format.json { render json: @bill, status: :created, location: @bill }
       else
-        format.html { render action: "new" }
-        format.json { render json: @bill.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        #format.json { render json: @bill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,11 +66,11 @@ class BillsController < ApplicationController
    
     respond_to do |format|
       if @bill.update_attributes(params[:bill])
-        format.html { redirect_to @bill, notice: 'Bill was successfully updated.' }
-        format.json { head :ok }
+        format.html { redirect_to @bill, :notice => 'Bill was successfully updated.' }
+        #format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @bill.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        #format.json { render json: @bill.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -81,7 +83,7 @@ class BillsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to bills_url }
-      format.json { head :ok }
+      #format.json { head :ok }
     end
   end
   
@@ -90,7 +92,7 @@ class BillsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json { render json: @bills }
+      #format.json { render json: @bills }
     end
   end
   
