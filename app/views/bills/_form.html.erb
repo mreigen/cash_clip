@@ -10,29 +10,32 @@
       </ul>
     </div>
   <% end %>
-  <%= f.hidden_field :user_id, :value => current_user.id%>
-  <div class="field">
-    <%= f.label "Serial number" %><br />
-    <%= f.text_field :serial %>
-  </div>
-  <div class="field">
-    <%= f.label "Year" %><br />
-    <%= f.text_field :year %>
-  </div>
-  <div class="field">
-    <%= f.label "Back number" %><br />
-    <%= f.text_field :backnumber %>
-  </div>
-  <%= f.hidden_field :orig_loc %>
-  <div class="field">
-    <%= f.label :curr_loc %><br />
-    <%= f.text_field :curr_loc, :onchange => "$('#bill_orig_loc').val(value);"%>
-  </div>
-  <div class="field">
-    <%= f.label :amount %><br />
-	<%= f.select :amount, options_for_select([["$1",1],["$2",2],["$5",5],["$10",10],["$20",20],["$50",50],["$100",100]], :selected => @bill.amount.to_i) %>
+  <div class="fields">
+    <%= f.hidden_field :user_id, :value => current_user.id%>
+    <div class="field">
+      <%= f.text_field :serial, :class => "big_field" %>
+    </div>
+  
+    <!--
+    <div class="field">
+      <%= f.label "Year" %>
+      <%= f.text_field :year %>
+    </div>
+    <div class="field">
+      <%= f.label "Back number" %>
+      <%= f.text_field :backnumber %>
+    </div>
+    <%= f.hidden_field :orig_loc %>
+    <div class="field">
+      <%= f.label :curr_loc %>
+      <%= f.text_field :curr_loc, :onchange => "$('#bill_orig_loc').val(value);"%>
+    </div>
+    -->
+    <div class="field">
+  	  <%= f.select :amount, options_for_select([["$1",1],["$2",2],["$5",5],["$10",10],["$20",20],["$50",50],["$100",100]], :selected => @bill.amount.to_i) %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :value => "Claim", :class => "btn btn-success btn-large" %>
   </div>
 <% end %>

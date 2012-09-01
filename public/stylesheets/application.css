@@ -1,6 +1,6 @@
 body {
   background-color: #4B7399;
-  font-family: Verdana, Helvetica, Arial;
+  font-family: Helvetica, Verdana, Arial;
   font-size: 14px;
 }
 
@@ -18,13 +18,13 @@ a {
   overflow: hidden;
 }
 
+/* APPLICATION SCOPED - CUSTOM CSS */
+
 #container {
-  width: 75%;
-  margin: 0 auto;
-  background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
+	width: 90%;
+	margin: 20px auto;
+	background-color: transparent;
+	padding: 20px 40px;
 }
 
 #flash_notice, #flash_error, #flash_alert {
@@ -73,4 +73,29 @@ a {
 
 .error_messages ul {
   margin: 0;
+}
+
+#content_wrapper {
+	margin: 0 auto;
+	width: 500px;
+	text-align: center;
+}
+
+.fields {
+	padding-top: 80px;
+}
+
+.field {
+	padding: 5px 0 5px 0;
+}
+
+.big_field {
+	height: 40px !important;
+	width: 400px;
+	font-size: 40px !important;
+	text-align: center;
+}
+
+.note {
+	padding: 20px;
 }
