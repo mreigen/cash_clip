@@ -5,11 +5,11 @@ Welcome back, <%= current_user.username -%>!
 
 <table>
   <tr>
-    <th>Id</th>
+  <th>Id</th>
 	<th>Serial number</th>
 	<th>Back number</th>
 	<th>Year</th>
-    <th>Original location</th>
+  <th>Original location</th>
 	<th>Current location</th>
 	<th>Amount</th>
     <th></th>
@@ -19,12 +19,12 @@ Welcome back, <%= current_user.username -%>!
 <% Bill.where(:user_id => current_user.id).each do |bill| %>
   <tr>
     <td><%= bill.id %></td>
- 	<td><%= bill.serial %></td>
+ 	  <td><%= bill.serial %></td>
     <td><%= bill.backnumber %></td>
     <td><%= bill.year %></td>
     <td><%= bill.orig_loc %></td>
-	<td><%= bill.curr_loc %></td>
-	<td><%= bill.amount %></td>
+	  <td><%= bill.curr_loc %></td>
+	  <td><%= bill.amount %></td>
     <td><%= link_to 'Show', bill %></td>
     <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
     <td><%= link_to 'Destroy', bill, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -34,5 +34,5 @@ Welcome back, <%= current_user.username -%>!
 
 <br />
 <div id="new_link">
-<%= link_to 'New Bill', new_bill_path %>
+<%= link_to 'New Bill', new_bill_path, :class => "btn" %>
 </div>
