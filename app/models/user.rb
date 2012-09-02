@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   has_many :fedbank_users
   has_many :fedbanks, :through => :fedbank_users
   has_many :bills
+  has_many :posts
+  
+  acts_as_follower
   
   attr_accessor :password
   before_save :prepare_password
@@ -26,8 +29,8 @@ class User < ActiveRecord::Base
     BCrypt::Engine.hash_secret(pass, password_salt)
   end
   
-  def has_bill?(options = {})
-    @bill = Bill.where({:serial => options[:serial], :user_id => options[:user_id] })
+  def has_bill?(serial)
+    @bill = Bill.where({ :serial => :serial, :user_id => self.id })
     return !@bill.blank?
   end
   

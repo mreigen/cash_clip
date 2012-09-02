@@ -1,4 +1,6 @@
 CashClip::Application.routes.draw do
+  resources :groups
+
   match 'user/edit' => 'users#edit', :as => :edit_current_user
 
   match 'signup' => 'users#new', :as => :signup
@@ -15,7 +17,9 @@ CashClip::Application.routes.draw do
 
   resources :bills
   
-  root :to => "bills#index"
+  resources :posts
+  
+  root :to => "bills#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

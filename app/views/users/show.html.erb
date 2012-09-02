@@ -1,0 +1,38 @@
+<div class="claimed_bills">
+  <h5>Claimed bills</h5>
+  <% current_user.bills.each do |bill| %>
+    <div class="bill">
+      <div class="serial">
+        <%= link_to bill.serial, bill_path(bill.id) %>
+      </div>
+      <div class="amount">
+        $<%= bill.amount %>
+      </div>
+      <div class="time_ago">
+        <%= time_ago_in_words(bill.created_at)%> ago
+      </div>
+      <div class="location">
+        at <%= bill.curr_loc %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="post_list_large">
+<% @posts.each do |post| %>
+    <div class="post_wrapper">
+      <div class="image">
+        <img src="/images/avatar.jpg"/>
+      </div>
+      <div class="name">
+        <%= link_to post.owner.username, user_path %>
+      </div>
+      <div class="message"><%= post.message %></div>
+    </div>
+<% end %>
+</div>
+</table>
+
+<br />
+<div id="new_link">
+<%= link_to 'Shout another', new_post_path, :class => "btn" %>
+</div>

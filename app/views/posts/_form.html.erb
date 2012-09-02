@@ -1,0 +1,27 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this shout out from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="fields">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :group_id, :value => @group.id %>
+    
+    <div class="field">
+      <%= f.text_field :message, :class => "big_field" %>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit :value => "Shout", :class => "btn btn-success btn-large" %>
+  </div>
+  
+<% end %>

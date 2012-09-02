@@ -12,6 +12,7 @@ group :development do
 end
 
 gem 'rails', '3.0.10'
+gem "acts_as_follower"
 gem 'nifty-generators'
 gem "faker"
 gem "devise"

@@ -27,4 +27,14 @@ class UsersController < ApplicationController
       render :action => 'edit'
     end
   end
+  
+  def show
+    @posts = []
+    # might need to be changed because users may not only follow group but other users
+    current_user.all_following.each do |group|
+      @posts << group.posts
+    end
+    @posts.flatten!
+  end
+  
 end

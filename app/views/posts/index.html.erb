@@ -1,0 +1,27 @@
+<div class="post_list_large">
+<% @posts.each do |post| %>
+    <div class="post_wrapper">
+      <div class="user_info">
+        <img src="/images/avatar.jpg"/>
+      </div>
+      <div class="message"><%= post.message %></div>
+    </div>
+    
+  <!--
+  <tr>
+ 	  <td><%= post.group.id %></td>
+    <td><%= post.user.username %></td>
+    <td><%= post.message %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  -->
+<% end %>
+</div>
+</table>
+
+<br />
+<div id="new_link">
+<%= link_to 'Shout another', new_post_path, :class => "btn" %>
+</div>

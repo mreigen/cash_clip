@@ -39,6 +39,7 @@ GEM
       activemodel (= 3.0.10)
       activesupport (= 3.0.10)
     activesupport (3.0.10)
+    acts_as_follower (0.1.1)
     arel (2.0.10)
     aws-s3 (0.6.3)
       builder
@@ -172,6 +173,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_follower
   aws-s3
   aws-sdk
   bcrypt-ruby
