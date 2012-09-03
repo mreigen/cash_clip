@@ -9,12 +9,17 @@ CashClip::Application.routes.draw do
 
   match 'login' => 'sessions#new', :as => :login
 
+  match 'user/:user_id/post/:post_id/like' => 'posts#liked_by_user', :as => :user_like_post
+  match 'user/:user_id/post/:post_id/unlike' => 'posts#unliked_by_user', :as => :user_unlike_post
+  
   resources :sessions
 
   resources :bill_points
 
-  resources :users
-
+  resources :users do
+    resources :posts
+  end
+  
   resources :bills
   
   resources :posts

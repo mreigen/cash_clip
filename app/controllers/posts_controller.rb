@@ -45,4 +45,28 @@ class PostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def liked_by_user
+    @post = Post.find(params[:post_id])
+    @user = current_user.blank? ? User.find(params[:user_id]) : current_user
+    @user.follow(@post)
+    
+    respond_to do |format|
+      format.text { render :text => "OK" }
+    end
+  end
+  
+  def unliked_by_user
+    @post = Post.find(params[:post_id])
+    @user = current_user.blank? ? User.find(params[:user_id]) : current_user
+    @user.stop_following(@post)
+    
+    respond_to do |format|
+      format.text { render :text => "OK" }
+    end
+  end
+  
+  def like_count
+    self.count_user_followers
+  end
 end

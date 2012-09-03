@@ -7,12 +7,14 @@ group :production do
 end
 
 group :development do
-  gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'sqlite3'
   gem 'mechanize'
 end
 
 gem 'rails', '3.0.10'
+
 gem "acts_as_follower"
+
 gem 'nifty-generators'
 gem "faker"
 gem "devise"

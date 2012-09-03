@@ -9,9 +9,41 @@
       </div>
       <div class="message"><%= post.message %></div>
       <div class="actions">
-        <%= link_to "Like", "" %>
+        <a href="#" id="like_button_<%= post.id%>" class="like_button" onclick="return false;" data-post-id="<%= post.id %>" data-like-value="<%= post.liked_by_user?(current_user) ? '1' : '0' %>">
+        <% if post.liked_by_user?(current_user) %>
+          Unlike
+        <% else %>
+          Like
+        <% end %>
+        </a>
         <%= link_to "Reply", "" %>
       </div>
     </div>
 <% end %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".like_button").click(function() {
+      $likeButton = $(this);
+      is_like_now = ($(this).attr("data-like-value") == "0");
+      console.log(is_like_now);
+      $.ajax({
+        type: "GET",
+        url: "/user/" + <%= current_user.id %> + "/post/" + $(this).attr("data-post-id") + ((is_like_now) ? "/unlike" : "/like"),
+        data: {},
+        success: function(res) {
+          if (is_like_now) {
+            console.log("liked post, response: " + res);
+            $likeButton.text("Unlike");
+            $likeButton.attr("data-like-value", "1");
+          } else {
+            console.log("unliked post, response: " + res);
+            $likeButton.text("Like");
+            $likeButton.attr("data-like-value", "0");
+          }
+        }
+      });
+    });
+  });
+</script>

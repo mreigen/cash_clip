@@ -9,3 +9,5 @@ tmp/
 app/.DS_Store
 
 *.lock
+
+*.lock
