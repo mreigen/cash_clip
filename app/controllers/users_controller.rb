@@ -29,8 +29,9 @@ class UsersController < ApplicationController
   end
   
   def show
+    @user = User.find(params[:id])
     @posts = []
-    @posts << current_user.posts
+    @posts << @user.posts
     @posts.flatten!
   end
   

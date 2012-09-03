@@ -1,39 +1,3 @@
-<div id="left_column">
-  <div class="claimed_bills box">
-    <h5>Claimed bills</h5>
-    <% current_user.bills.each do |bill| %>
-      <div class="bill line">
-        <div class="serial">
-          <%= link_to bill.serial, bill_path(bill.id) %>
-        </div>
-        <div class="amount">
-          $<%= bill.amount %>
-        </div>
-        <div class="time_ago">
-          <%= time_ago_in_words(bill.created_at)%> ago
-        </div>
-        <div class="location">
-          at <%= bill.curr_loc %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="recent_groups box">
-    <h5>Clubs you've joined</h5>
-    <% current_user.following_by_type('Group').each do |group| %>
-      <div class="group line">
-        <div class="name">
-          <%= link_to group.name + " Club ($" + group.get_bill_amount + ")", group_path(group) %>
-        </div>
-        <div class="time_ago">
-          <%= time_ago_in_words(group.created_at)%> ago
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
 <div class="post_list_large">
 <% @posts.each do |post| %>
     <div class="post_wrapper">
@@ -41,15 +5,9 @@
         <img src="/images/avatar.jpg"/>
       </div>
       <div class="name">
-        <%= link_to post.owner.username, user_path %>
+        <%= link_to post.owner.username, user_path(post.owner.id) %>
       </div>
       <div class="message"><%= post.message %></div>
     </div>
 <% end %>
-</div>
-</table>
-
-<br />
-<div id="new_link">
-<%= link_to 'Shout another', new_post_path, :class => "btn" %>
 </div>
