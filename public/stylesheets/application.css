@@ -103,14 +103,14 @@ a {
 /* POST INDEX */
 
 .post_list_large {
-	width: 400px;
+	width: 500px;
 	position: relative;
 	float: left;
 }
 
 .post_wrapper {
 	width: 100%;
-	height: 72px;
+	min-height: 72px;
 	background-color: whiteSmoke;
 	padding: 5px;
 	margin-top: 1px;
@@ -137,18 +137,47 @@ a {
 	padding: 0 0 0 10px;
 }
 
-/* CLAIMED BILLS */
-.claimed_bills {
-	width: 200px;
+/* LEFT COLUMN */
+
+/* front page LEFT COLUMN */
+#left_column {
+	width: 230px;
+	min-height: 500px;
+	position: relative;
+	float: left;
+	border-right: 1px solid #EEE;
+	margin-right: 5px;
+}
+
+#left_column .box {
+	width: 215px;
 	height: 200px;
 	position: relative;
 	float: left;
 	overflow: hidden;
 	text-align: left;
-	padding: 5px;
-	margin-right: 5px;
-	border-right: 1px solid whitesmoke;
+	padding: 5px 5px 20px 5px;
+	margin: 5px;
 	line-height: 15px;
+	border-bottom: 1px solid #EEE;
+}
+
+#left_column .line {
+	padding: 3px;
+	height: 30px;
+}
+
+#left_column .time_ago {
+	font-size: 10px;
+	font-style: italic;
+	color: gray;
+	float: right;
+	position: relative;
+}
+
+/* CLAIMED BILLS */
+.claimed_bills {
+
 }
 
 .claimed_bills .serial {
@@ -168,16 +197,11 @@ a {
 }
 
 .claimed_bills .bill {
-	padding: 3px;
-	height: 30px;	
+
 }
 
 .claimed_bills .time_ago {
-	font-size: 10px;
-	font-style: italic;
-	color: gray;
-	float: right;
-	position: relative;
+
 }
 
 .claimed_bills .amount {
@@ -187,4 +211,9 @@ a {
 	color: gray;
 	font-size: 10px;
 	font-style: bold;
+}
+
+/* CLUBS */
+.recent_groups {
+
 }

@@ -30,10 +30,7 @@ class UsersController < ApplicationController
   
   def show
     @posts = []
-    # might need to be changed because users may not only follow group but other users
-    current_user.all_following.each do |group|
-      @posts << group.posts
-    end
+    @posts << current_user.posts
     @posts.flatten!
   end
   
