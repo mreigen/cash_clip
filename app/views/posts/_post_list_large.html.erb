@@ -1,5 +1,12 @@
 <div class="post_list_large">
-<% @posts.each do |post| %>
+  <div id="new_post">
+    <textarea id="new_post_text" name="post[message]" rows="1"></textarea>
+    <div class="actions">
+      <a id="post_button" href="#" onclick="return false;" class="btn btn-info btn-small">Post</a>
+    </div>
+  </div>
+  
+  <% @posts.each do |post| %>
     <div class="post_wrapper">
       <div class="image">
         <img src="/images/avatar.jpg"/>
@@ -19,18 +26,42 @@
         <%= link_to "Reply", "" %>
       </div>
     </div>
-<% end %>
+  <% end %>
 </div>
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    $(".like_button").click(function() {
+  function prependCommentTo(divId, userId, userName, postId, message) {
+    $html = $("<div class='post_wrapper'>\
+        <div class='image'>\
+          <img src='/images/avatar.jpg'>\
+        </div>\
+        <div class='name'>\
+          <a href='/users/" + userId + "'>" + userName + "</a>\
+        </div>\
+        <div class='message'>" + message + "</div>\
+        <div class='actions'>\
+          <a href='#' id='like_button_" + postId + "' class='like_button' onclick='return false;' data-post-id='" + postId + "' data-like-value='0'>\
+          Like\
+          </a>\
+          <a href=''>Reply</a>\
+        </div>\
+      </div>").css("opacity", 0);
+    $("#" + divId).append($html);
+    $html.animate({
+      opacity: 1
+    }, 1000, function() {
+      registerLikeAjaxTo("#like_button_" + postId);
+    });
+  }
+  
+  function registerLikeAjaxTo(button) {
+    $(button).click(function() {
       $likeButton = $(this);
       is_like_now = ($(this).attr("data-like-value") == "0");
       console.log(is_like_now);
       $.ajax({
         type: "GET",
-        url: "/user/" + <%= current_user.id %> + "/post/" + $(this).attr("data-post-id") + ((is_like_now) ? "/unlike" : "/like"),
+        url: "/user/" + <%= current_user.id %> + "/post/" + $(this).attr("data-post-id") + ((is_like_now) ? "/like" : "/unlike"),
         data: {},
         success: function(res) {
           if (is_like_now) {
@@ -45,5 +76,29 @@
         }
       });
     });
+  }
+  
+  $(document).ready(function() {
+    // textarea events
+    $("#new_post_text").click(function() {
+      $(this).css("height", "80px");
+    });
+    
+    // actions div
+    // post button
+    $("#post_button").click(function() {
+      $.ajax({
+        type: "POST",
+        url: "post/new_post",
+        data: {"post[message]":$("#new_post_text").val(), "post[user_id]":<%= current_user.id %>},
+        success: function(res) {
+          prependCommentTo("new_post", "<%= current_user.id %>", "<%= current_user.username%>", res, $("#new_post_text").val());
+        }
+      });
+    });
+    
+    // SEND LIKE / UNLIKE REQUESTS
+    registerLikeAjaxTo(".like_button");
+    
   });
 </script>

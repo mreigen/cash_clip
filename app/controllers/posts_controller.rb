@@ -46,6 +46,18 @@ class PostsController < ApplicationController
     end
   end
   
+  def new_post
+    @post = Post.new(params[:post])
+    
+    respond_to do |format|
+      if @post.save
+        format.text { render :text => @post.id }
+      else
+        format.text { render :text => "FAIL" }
+      end
+    end
+  end
+  
   def liked_by_user
     @post = Post.find(params[:post_id])
     @user = current_user.blank? ? User.find(params[:user_id]) : current_user
@@ -69,4 +81,5 @@ class PostsController < ApplicationController
   def like_count
     self.count_user_followers
   end
+  
 end

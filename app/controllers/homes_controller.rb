@@ -2,9 +2,8 @@ class HomesController < ApplicationController
   before_filter :login_required
   
   def show
-    @posts = []
-    @posts << current_user.posts
-    @posts.flatten!
+    @posts = current_user.posts
+    @posts.reverse!
   end
   
 end

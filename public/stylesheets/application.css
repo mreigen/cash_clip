@@ -257,3 +257,14 @@ RIGHT COLUMN
 	line-height: 15px;
 	border-bottom: 1px solid #EEE;
 }
+
+#new_post_text {
+	width: 540px !important;
+	padding: 3px;
+	margin-bottom: 2px;
+}
+
+#new_post .actions {
+	text-align: right;
+	padding: 5px;
+}
