@@ -1,13 +1,1 @@
-<div class="post_list_large">
-<% @posts.each do |post| %>
-    <div class="post_wrapper">
-      <div class="image">
-        <img src="/images/avatar.jpg"/>
-      </div>
-      <div class="name">
-        <%= link_to post.owner.username, user_path(post.owner.id) %>
-      </div>
-      <div class="message"><%= post.message %></div>
-    </div>
-<% end %>
-</div>
+<%= render :partial => "/posts/post_list_large", :locals => {:post => @post} %>

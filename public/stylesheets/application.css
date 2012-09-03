@@ -114,6 +114,8 @@ a {
 	background-color: whiteSmoke;
 	padding: 5px;
 	margin-top: 1px;
+	height: auto;
+	overflow: hidden;
 }
 
 .post_wrapper .image {
@@ -135,6 +137,18 @@ a {
 	font-size: 12px;
 	text-align: left;
 	padding: 0 0 0 10px;
+}
+
+.post_wrapper .actions {
+	position: relative;
+	float: left;
+	width: 100%;
+	text-align: right;
+}
+
+.post_wrapper .actions a {
+	padding: 5px;
+	font-size: 12px;
 }
 
 /* LEFT COLUMN */
